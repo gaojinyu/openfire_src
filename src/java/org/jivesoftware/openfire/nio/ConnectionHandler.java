@@ -166,6 +166,7 @@ public abstract class ConnectionHandler extends IoHandlerAdapter {
         // to be a parser for each running thread. Each Filter will be executed
         // by the Executor placed as the first Filter. So we can have a parser associated
         // to each Thread
+        System.out.println("message---"+message.toString());
         int hashCode = Thread.currentThread().hashCode();
         XMPPPacketReader parser = parsers.get(hashCode);
         if (parser == null) {

@@ -253,6 +253,6 @@ public interface UserProvider {
 	 * @throws   
 	 */  
 	public User createUser(String username, String password, String name,
-			String email, String phone, String birthday, String job, int sex, String signName, String icon, int loginType) throws UserAlreadyExistsException;
+			String email, String phone, String birthday, String job, int sex, String signName) throws UserAlreadyExistsException;
 
 }

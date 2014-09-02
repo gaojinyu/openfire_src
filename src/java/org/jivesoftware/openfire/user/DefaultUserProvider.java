@@ -68,8 +68,8 @@ public class DefaultUserProvider implements UserProvider {
     private static final String ALL_USERS =
             "SELECT username FROM ofUser ORDER BY username";
     private static final String INSERT_USER =
-            "INSERT INTO ofUser (username,plainPassword,encryptedPassword,name,email,creationDate,modificationDate,phone,birthday,job,sex,signName,icon,loginType) " +
-            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            "INSERT INTO ofUser (username,plainPassword,encryptedPassword,name,email,creationDate,modificationDate,phone,birthday,job,sex,signName) " +
+            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String DELETE_USER_FLAGS =
             "DELETE FROM ofUserFlag WHERE username=?";
     private static final String DELETE_USER_PROPS =
@@ -536,7 +536,7 @@ public class DefaultUserProvider implements UserProvider {
 	 */  
 	@Override
 	public User createUser(String username, String password, String name,
-			String email, String phone, String birthday, String job, int sex, String signName, String icon, int loginType) throws UserAlreadyExistsException {
+			String email, String phone, String birthday, String job, int sex, String signName) throws UserAlreadyExistsException {
 		// TODO Auto-generated method stub
 		try {
             loadUser(username);
@@ -611,12 +611,7 @@ public class DefaultUserProvider implements UserProvider {
                 }else{
                 	pstmt.setString(12, signName);
                 }
-                if(icon==null||icon.matches("\\s*")){
-                	pstmt.setNull(13, Types.VARCHAR);
-                }else{
-                	pstmt.setString(13, signName);
-                }
-                pstmt.setInt(14, loginType);
+              
                 pstmt.execute();
             }
             catch (Exception e) {

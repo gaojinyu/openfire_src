@@ -424,7 +424,7 @@ public class HybridUserProvider implements UserProvider {
 	 */  
 	@Override
 	public User createUser(String username, String password, String name,
-			String email, String phone, String birthday, String job, int sex, String signName, String icon, int loginType) {
+			String email, String phone, String birthday, String job, int sex, String signName) {
 		// TODO Auto-generated method stub
 		return null;
 	}

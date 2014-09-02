@@ -499,7 +499,7 @@ public class UserManager implements IQResultListener {
 	 * @return: User      
 	 * @throws   
 	 */  
-	public User createUser(String username, String password, String name, String email, String phone, String birthday, String job, int sex, String signName, String icon, int loginType) throws UserAlreadyExistsException {
+	public User createUser(String username, String password, String name, String email, String phone, String birthday, String job, int sex, String signName) throws UserAlreadyExistsException {
 		if (provider.isReadOnly()) {
             throw new UnsupportedOperationException("User provider is read-only.");
         }
@@ -518,7 +518,7 @@ public class UserManager implements IQResultListener {
             throw new IllegalArgumentException("Invalid or empty email address specified with provider that requires email address. User: "
                                                 + username + " Email: " + email);
         }
-        User user = provider.createUser(username, password, name, email,phone,birthday,job,sex,signName,icon,loginType);
+        User user = provider.createUser(username, password, name, email,phone,birthday,job,sex,signName);
         userCache.put(username, user);
 
         // Fire event.

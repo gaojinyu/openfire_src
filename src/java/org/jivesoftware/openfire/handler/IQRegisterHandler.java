@@ -281,8 +281,6 @@ public class IQRegisterHandler extends IQHandler implements ServerFeaturesProvid
                     String job=null;	//gjy
                     int sex=0; 	//gjy
                     String signName=null;	//gjy
-                    String icon=null;	//gjy
-                    int loginType=0;	//gjy
                     User newUser;
                     DataForm registrationForm;
                     FormField field;
@@ -325,8 +323,6 @@ public class IQRegisterHandler extends IQHandler implements ServerFeaturesProvid
                         job=iqElement.elementText("job");
                         sex=Integer.parseInt(iqElement.elementText("sex"));
                         signName=iqElement.elementText("signName");
-                        icon=iqElement.elementText("icon");
-                        loginType=Integer.parseInt(iqElement.elementText("loginType"));
                         System.out.println("handlerIQ--phone---"+phone);	//gjy
                     }
                     if (email != null && email.matches("\\s*")) {
@@ -351,9 +347,7 @@ public class IQRegisterHandler extends IQHandler implements ServerFeaturesProvid
                     if(signName!=null&&signName.matches("\\s*")){
                     	signName=null;
                     }  //gjy
-                    if(icon!=null&&icon.matches("\\s*")){
-                    	icon=null;
-                    }
+                 
                    
                     // So that we can set a more informative error message back, lets test this for
                     // stringprep validity now.
@@ -396,7 +390,7 @@ public class IQRegisterHandler extends IQHandler implements ServerFeaturesProvid
                             }
                             else if (password != null && password.trim().length() > 0) {
                                 // An admin can create new accounts when logged in.
-                                newUser = userManager.createUser(username, password, name, email,phone,birthday,job,sex,signName,icon,loginType);
+                                newUser = userManager.createUser(username, password, name, email,phone,birthday,job,sex,signName);
                             }
                             else {
                                 // Deny registration of users with no password
@@ -425,7 +419,7 @@ public class IQRegisterHandler extends IQHandler implements ServerFeaturesProvid
                         }
                         else {
                             // Create the new account
-                            newUser = userManager.createUser(username, password, name, email,phone,birthday,job,sex,signName,icon,loginType);
+                            newUser = userManager.createUser(username, password, name, email,phone,birthday,job,sex,signName);
                         }
                     }
                     // Set and save the extra user info (e.g. full name, etc.)
